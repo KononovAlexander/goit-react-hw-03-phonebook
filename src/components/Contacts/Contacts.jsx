@@ -2,9 +2,7 @@ import {List, Button} from './Contacts.styled';
 import {filteredContacts} from '../Filter/Filter'
 
 export const Contacts = ({deleteContact}) => {
-
-
-
+    
     return (
             <List>
                 {filteredContacts.map(contact => {  

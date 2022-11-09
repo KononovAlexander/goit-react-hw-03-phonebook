@@ -14,6 +14,20 @@ font-size:36px;
     contacts: [],
     filter: ''
     }
+
+    componentDidUpdate(prevProps, prevState){
+      if(this.state.contacts !== prevState.contacts){
+        localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+      }
+    }
+
+    componentDidMount() {
+      const arr = localStorage.getItem('contacts');
+      const parsedArr = JSON.parse(arr);
+      if(parsedArr){
+        this.setState({contacts:parsedArr})
+      }
+    }
     
     addContact = data => {
       const isExist = this.state.contacts.find(contact => contact.name === data.name);
@@ -53,11 +67,12 @@ font-size:36px;
           </div>
           <Box width={400}>
           <Title>Contacts</Title>
-            <Filter value={this.state.filter} 
+                
+                <Filter value={this.state.filter} 
                     onChange={this.changeFilter}  
                     filter={this.state.filter} 
                     contacts={this.state.contacts} />
-            <Contacts 
+                  <Contacts 
               deleteContact={this.deleteContact}/>
           </Box>
         </div>
