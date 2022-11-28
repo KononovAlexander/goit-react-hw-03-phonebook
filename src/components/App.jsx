@@ -31,8 +31,11 @@ font-size:36px;
     
     addContact = data => {
       const isExist = this.state.contacts.find(contact => contact.name === data.name);
-      isExist ? alert(`${data.name} is allready in contacts`): this.setState(prevState => ({ 
-        contacts: [...prevState.contacts, data]
+      if(isExist) {
+        alert(`${data.name} is allready in contacts`)
+        return
+      } 
+      this.setState(prevState => ({ contacts: [...prevState.contacts, data]
       }));
     }
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import {Component} from 'react';
 import {Box} from '../Box'
 import { nanoid } from 'nanoid'
@@ -61,4 +62,8 @@ export class Form extends Component {
     </Box >
                 )
     }
+}
+
+Form.propTypes = {
+    onSubmit:PropTypes.func
 }
